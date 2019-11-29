@@ -2,6 +2,8 @@
 
 A general purpose bubble sort (generally not efficient) algorithm that can handle various data types.
 
+number[] | [10, 3, -5, 0] => [ -5, 0, 3, 10]
+
 ### Setup
 
 Create ./build and ./src
@@ -20,3 +22,10 @@ Update package.json with:
 ```
 
 `$ npm start` will now watch for changes build and run with every save
+
+### Testing
+
+`$ npm i jest @types/jest ts-jest -D`
+
+source: https://basarat.gitbooks.io/typescript/docs/testing/jest.html
+https://amenallah.com/node-js-typescript-jest-express-starter/
