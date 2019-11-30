@@ -4,6 +4,10 @@ A general purpose bubble sort (generally not efficient) algorithm that can handl
 
 number[] | [10, 3, -5, 0] => [ -5, 0, 3, 10]
 
+## Why do we care about Interfaces?
+
+Interfaces creates a contract on how entity can communicate with another entity. We able to create a generic Sorter class that can sort various types of as long as they adhere to the contract defined in the interface.
+
 ### Setup
 
 Create ./build and ./src

@@ -3,5 +3,5 @@ import { NumbersCollection } from './NumbersCollection'
 
 const numbersCollection = new NumbersCollection([10, 3, -5, 0])
 const sorter = new Sorter(numbersCollection)
-sorter.sort()
+sorter.bubbleSort()
 console.log(numbersCollection.data)
