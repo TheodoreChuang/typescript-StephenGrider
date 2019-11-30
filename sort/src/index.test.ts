@@ -1,4 +1,3 @@
-import { Sorter } from './Sorter'
 import { NumbersCollection } from './NumbersCollection'
 import { CharactersCollection } from './CharactersCollection'
 import { Node, LinkedList } from './LinkedList'
@@ -70,15 +69,13 @@ test('LinkedList can swap the values of two nodes', () => {
 /* Sorter */
 test('Sorts an array of numbers', () => {
   const numbersCollection = new NumbersCollection([10, 3, -5, 0])
-  const sorter = new Sorter(numbersCollection)
-  sorter.bubbleSort()
+  numbersCollection.bubbleSort()
   expect(numbersCollection.data).toStrictEqual([-5, 0, 3, 10])
 })
 
 test('Sorts an string of characters', () => {
   const charactersCollection = new CharactersCollection('aAXaxzZa')
-  const sorter = new Sorter(charactersCollection)
-  sorter.bubbleSort()
+  charactersCollection.bubbleSort()
   expect(charactersCollection.data).toBe('aAaaXxzZ')
 })
 
@@ -88,8 +85,7 @@ test('Sorts a linked list of numbers', () => {
   linkedList.add(-45)
   linkedList.add(935)
 
-  const sorter = new Sorter(linkedList)
-  sorter.bubbleSort()
+  linkedList.bubbleSort()
   expect(linkedList.at(0).data).toBe(-45)
   expect(linkedList.at(2).data).toBe(935)
 })
