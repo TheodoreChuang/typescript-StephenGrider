@@ -1,14 +1,21 @@
-import { matches, manUnitedWins } from './index'
+import { manUnitedWins } from './index'
+import { CsvFileReader } from './CsvFileReader'
 
-const matchesData = matches()
+const reader = new CsvFileReader('football.csv')
+reader.read()
 
-test('matches can read the CSV file', () => {
-  expect(matchesData).toBeTruthy()
+test('CsvFileReader can read the CSV file', () => {
+  expect(reader.data).toBeTruthy()
 })
 
-test('matches can parse the data into a 2D array', () => {
-  const row0 = ['10/08/2018', 'Man United', 'Leicester', '2', '1', 'H', 'A Marriner']
-  expect(matchesData[0]).toStrictEqual(row0)
+test('CsvFileReader can parse the data into a 2D array', () => {
+  expect(Array.isArray(reader.data)).toBeTruthy()
+  expect(Array.isArray(reader.data[0])).toBeTruthy()
+})
+
+test('CsvFileReader transforms first row as expected', () => {
+  const row0 = [new Date(2018, 7, 10), 'Man United', 'Leicester', 2, 1, 'H', 'A Marriner']
+  expect(reader.data[0]).toStrictEqual(row0)
 })
 
 test('Calculated Man United wins to be 18', () => {

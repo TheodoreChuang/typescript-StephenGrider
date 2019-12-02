@@ -5,6 +5,12 @@ CSV Game Data => Load => Parse => Analyze => Report
 
 CSV Headers: Game Date, Home Team, Away Team, Home Team Score, Away Team Score, Winning Team (H, A, D), Referee
 
+### Concepts Used:
+
+- enums (ex. enum MatchResult)
+- type assertions (values as type)
+- tuples (ex. type MatchDate)
+
 ### Setup
 
 Create ./build and ./src
