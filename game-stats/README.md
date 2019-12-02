@@ -10,6 +10,8 @@ CSV Headers: Game Date, Home Team, Away Team, Home Team Score, Away Team Score, 
 - enums (ex. enum MatchResult)
 - type assertions (values as type)
 - tuples (ex. type MatchDate)
+- abstract class (ex. CsvReader)
+- generics, used heavily in reusable code (ex. CsvFileReader<TypeOfData>)
 
 ### Setup
 
