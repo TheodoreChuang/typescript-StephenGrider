@@ -1,7 +1,8 @@
 import { MatchReader } from './MatchReader'
 import { CsvFileReader } from './CsvFileReader'
-import { MatchResult } from './MatchResult'
-import { manUnitedWins } from './index'
+import { WinsAnalysis } from './analyzers/WinsAnalysis'
+import { ConsoleReport } from './reportTargets/ConsoleReport'
+import { Summary } from './Summary'
 
 const csvFileReader = new CsvFileReader('football.csv')
 
@@ -23,5 +24,6 @@ test('MatchReader transforms first row as expected', () => {
 })
 
 test('Calculated Man United wins to be 18', () => {
-  expect(manUnitedWins()).toBe(18)
+  const analyzeManUnitedWins = new WinsAnalysis('Man United').run(matchReader.matches)
+  expect(analyzeManUnitedWins).toBe('Team Man United won 18 games.')
 })
