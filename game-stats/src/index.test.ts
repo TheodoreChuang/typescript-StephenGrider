@@ -23,7 +23,12 @@ test('MatchReader transforms first row as expected', () => {
   expect(matchReader.matches[0]).toStrictEqual(row0)
 })
 
-test('Calculated Man United wins to be 18', () => {
+test('Calculated Man United wins correctly', () => {
   const analyzeManUnitedWins = new WinsAnalysis('Man United').run(matchReader.matches)
   expect(analyzeManUnitedWins).toBe('Team Man United won 18 games.')
+})
+
+test('Calculated Bournemouth wins correctly', () => {
+  const analyzeManUnitedWins = new WinsAnalysis('Bournemouth').run(matchReader.matches)
+  expect(analyzeManUnitedWins).toBe('Team Bournemouth won 11 games.')
 })
