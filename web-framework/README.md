@@ -16,6 +16,10 @@
 
 ### Set Up
 
+### Run
+
+`$ parcel index.html`
+
 ### Testing
 
 `$ npm i typescript jest @types/jest ts-jest -D`
