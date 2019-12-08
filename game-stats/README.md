@@ -39,6 +39,8 @@ Update package.json with:
 
 `$ npm i typescript jest @types/jest ts-jest -D`
 
+Add 'jest.config.js`
+
 Update package.json with:
 
 ```
