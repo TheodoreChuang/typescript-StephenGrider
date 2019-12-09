@@ -16,9 +16,14 @@
 
 ### Set Up
 
-### Run
+### Run Frontend
 
 `$ parcel index.html`
+
+### Run Backend
+
+Backend server by JSON server
+`$ json-server -w db.json`
 
 ### Testing
 
