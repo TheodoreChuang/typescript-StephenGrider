@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 import { rootUrl } from '../index'
+import { Eventing } from './Eventing'
 
 interface UserProps {
   id?: number
@@ -7,13 +8,10 @@ interface UserProps {
   age?: number
 }
 
-// type alias
-type Callback = () => {}
-
 export class User {
-  constructor(private data: UserProps) {}
+  public events: Eventing = new Eventing()
 
-  events: { [key: string]: Callback[] } = {}
+  constructor(private data: UserProps) {}
 
   get<K extends keyof UserProps>(propName: K): string | number | void {
     return this.data[propName]
@@ -21,20 +19,6 @@ export class User {
 
   set(update: UserProps): void {
     Object.assign(this.data, update)
-  }
-
-  on(eventName: string, callback: Callback) {
-    const handlers = this.events[eventName] || []
-    handlers.push(callback)
-    this.events[eventName] = handlers
-  }
-
-  trigger(eventName: string): void {
-    const handlers = this.events[eventName]
-
-    if (!handlers || handlers.length === 0) return
-
-    handlers.forEach(callback => callback())
   }
 
   fetch(): void {

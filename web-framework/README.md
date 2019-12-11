@@ -2,13 +2,19 @@
 
 ## MODEL
 
-### class User
+#### class User
 
 - private data: UserProps
 - get(propName: string): (string | number)
 - set(update: UserProp): void
-- on(eventName: string, callback: () =>{})
+
+#### class Eventing
+
+- on(eventName: string, callback: () => void)
 - trigger(eventName: string): void
+
+#### class Sync
+
 - fetch(): Promise
 - save(): Promise
 

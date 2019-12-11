@@ -1,7 +1,7 @@
 import { User } from './User'
 
 describe('Test User model', () => {
-  let testUser: any
+  let testUser: User
   beforeEach(() => (testUser = new User({ name: 'John Citizen', age: 99 })))
 
   const mockCallbackEvent = jest.fn()
@@ -22,21 +22,21 @@ describe('Test User model', () => {
   test('ON registers an event', () => {
     expect(testUser.events).toStrictEqual({})
 
-    testUser.on('click', mockCallbackEvent)
-    testUser.on('click', mockCallbackEvent)
-    expect(testUser.events.click.length).toBe(2)
+    testUser.events.on('click', mockCallbackEvent)
+    testUser.events.on('click', mockCallbackEvent)
+    expect(testUser.events['click'].length).toBe(2)
   })
 
   test('TRIGGER does nothing if there are no events', () => {
-    const trigged = testUser.trigger('changed')
+    const trigged = testUser.events.trigger('changed')
     expect(trigged).toBeUndefined()
   })
   test('TRIGGER run each of its events for a specific trigger', () => {
-    testUser.on('click', mockCallbackEvent)
-    testUser.on('changed', mockCallbackEvent)
-    testUser.on('changed', mockCallbackEvent)
+    testUser.events.on('click', mockCallbackEvent)
+    testUser.events.on('changed', mockCallbackEvent)
+    testUser.events.on('changed', mockCallbackEvent)
 
-    testUser.trigger('changed')
+    testUser.events.trigger('changed')
     expect(mockCallbackEvent).toHaveBeenCalledTimes(2)
   })
 })
