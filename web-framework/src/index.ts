@@ -1,26 +1,22 @@
-import axios from 'axios'
 import { User } from './models/User'
 
 export const rootUrl = 'http://localhost:3000'
 
-const jc = new User({ name: 'John Citizen', age: 99 })
+const jc = new User({ name: 'John Citizen', age: 99, id: 84739532 })
+
+jc.on('change', () => console.warn('User Attributes Changed:\n', jc))
+jc.on('save', () => console.warn('User Saved:\n', jc))
+jc.on('error', () => console.error('Error saving user'))
+
 console.log(jc.get('name'))
 
-jc.attributes.set({ name: 'Jane Civilian', age: 1 })
+jc.set({ name: 'John Civilian', age: 1 })
 console.log(jc.get('name'))
 
-jc.on('changed', () => console.log('change 1'))
-jc.on('changed', () => console.log('change 2'))
-jc.trigger('changed')
+jc.on('updated', () => console.log('update 1'))
+jc.on('updated', () => console.log('update 2'))
+jc.trigger('updated')
 
-// const sleep = (milliseconds: number) => {
-//   return new Promise(resolve => setTimeout(resolve, milliseconds))
-// }
+jc.fetch()
 
-// sleep(1000).then(() => {
-//   axios.post(`${rootUrl}/users`, { id: 84739533 }).then(res => console.log(res))
-// })
-
-// sleep(2000).then(() => {
-//   axios.get(`${rootUrl}/users/84739533`).then(res => console.log(res))
-// })
+jc.save()

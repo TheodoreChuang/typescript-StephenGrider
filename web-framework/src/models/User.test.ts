@@ -28,15 +28,15 @@ describe('Test User model', () => {
   // })
 
   test('TRIGGER does nothing if there are no events', () => {
-    const trigged = testUser.trigger('changed')
+    const trigged = testUser.trigger('updated')
     expect(trigged).toBeUndefined()
   })
   test('TRIGGER run each of its events for a specific trigger', () => {
     testUser.on('click', mockCallbackEvent)
-    testUser.on('changed', mockCallbackEvent)
-    testUser.on('changed', mockCallbackEvent)
+    testUser.on('updated', mockCallbackEvent)
+    testUser.on('updated', mockCallbackEvent)
 
-    testUser.trigger('changed')
+    testUser.trigger('updated')
     expect(mockCallbackEvent).toHaveBeenCalledTimes(2)
   })
 })
