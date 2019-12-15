@@ -5,6 +5,11 @@
 - generic constrains get<K extends keyof T>(key: K): T[K] { ... }
   - https://www.udemy.com/course/typescript-the-complete-developers-guide/learn/lecture/15066982#content
 
+### Class Design
+
+- composition
+- delegation (simple pass through or coordination of multiple sub modules)
+
 ## MODEL
 
 #### class User

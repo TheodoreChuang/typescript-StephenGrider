@@ -4,14 +4,14 @@ import { User } from './models/User'
 export const rootUrl = 'http://localhost:3000'
 
 const jc = new User({ name: 'John Citizen', age: 99 })
-console.log(jc.attributes.get('name'))
+console.log(jc.get('name'))
 
 jc.attributes.set({ name: 'Jane Civilian', age: 1 })
-console.log(jc.attributes.get('name'))
+console.log(jc.get('name'))
 
-jc.events.on('changed', () => console.log('change 1'))
-jc.events.on('changed', () => console.log('change 2'))
-jc.events.trigger('changed')
+jc.on('changed', () => console.log('change 1'))
+jc.on('changed', () => console.log('change 2'))
+jc.trigger('changed')
 
 // const sleep = (milliseconds: number) => {
 //   return new Promise(resolve => setTimeout(resolve, milliseconds))
