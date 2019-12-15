@@ -1,38 +1,20 @@
-import axios, { AxiosResponse } from 'axios'
-import { rootUrl } from '../index'
+import { Attributes } from './Attributes'
 import { Eventing } from './Eventing'
+import { Sync } from './Sync'
+import { rootUrl } from '../index'
 
-interface UserProps {
+export interface UserProps {
   id?: number
   name?: string
   age?: number
 }
 
 export class User {
+  public attributes: Attributes<UserProps>
   public events: Eventing = new Eventing()
+  public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl)
 
-  constructor(private data: UserProps) {}
-
-  get<K extends keyof UserProps>(propName: K): string | number | void {
-    return this.data[propName]
-  }
-
-  set(update: UserProps): void {
-    Object.assign(this.data, update)
-  }
-
-  fetch(): void {
-    axios.get(`${rootUrl}/users/${this.get('id')}`).then((response: AxiosResponse): void => {
-      this.set(response.data)
-    })
-  }
-
-  save(): void {
-    const id = this.get('id')
-    if (id) {
-      axios.put(`${rootUrl}/users/${id}`, this.data)
-    } else {
-      axios.post(`${rootUrl}/users`, this.data)
-    }
+  constructor(attrs: UserProps) {
+    this.attributes = new Attributes<UserProps>(attrs)
   }
 }

@@ -1,15 +1,17 @@
 import axios from 'axios'
 import { User } from './models/User'
 
-const jc = new User({ name: 'John Citizen', age: 99 })
+export const rootUrl = 'http://localhost:3000'
 
-console.log(jc.get('name'))
+const jc = new User({ name: 'John Citizen', age: 99 })
+console.log(jc.attributes.get('name'))
+
+jc.attributes.set({ name: 'Jane Civilian', age: 1 })
+console.log(jc.attributes.get('name'))
 
 jc.events.on('changed', () => console.log('change 1'))
 jc.events.on('changed', () => console.log('change 2'))
 jc.events.trigger('changed')
-
-export const rootUrl = 'http://localhost:3000'
 
 // const sleep = (milliseconds: number) => {
 //   return new Promise(resolve => setTimeout(resolve, milliseconds))

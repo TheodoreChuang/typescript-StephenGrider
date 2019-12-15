@@ -1,5 +1,10 @@
 # Web Framework
 
+### TypeScript Concepts
+
+- generic constrains get<K extends keyof T>(key: K): T[K] { ... }
+  - https://www.udemy.com/course/typescript-the-complete-developers-guide/learn/lecture/15066982#content
+
 ## MODEL
 
 #### class User
