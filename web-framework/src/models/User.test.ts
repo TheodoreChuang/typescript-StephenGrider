@@ -2,7 +2,7 @@ import { User } from './User'
 
 describe('Test User model', () => {
   let testUser: User
-  beforeEach(() => (testUser = new User({ name: 'John Citizen', age: 99 })))
+  beforeEach(() => (testUser = User.buildUser({ name: 'John Citizen', age: 99 })))
 
   const mockCallbackEvent = jest.fn()
 
@@ -15,7 +15,7 @@ describe('Test User model', () => {
   })
 
   test('SET all attribute of an user', () => {
-    testUser.attributes.set({ name: 'Jane', age: 1 })
+    testUser.set({ name: 'Jane', age: 1 })
     expect(testUser.get('name')).toBe('Jane')
   })
 
@@ -24,7 +24,7 @@ describe('Test User model', () => {
 
   //   testUser.on('click', mockCallbackEvent)
   //   testUser.on('click', mockCallbackEvent)
-  //   expect(testUser.events['click'].length).toBe(2)
+  //   expect(testUser.events.events.click.length).toBe(2)
   // })
 
   test('TRIGGER does nothing if there are no events', () => {
@@ -39,4 +39,10 @@ describe('Test User model', () => {
     testUser.trigger('updated')
     expect(mockCallbackEvent).toHaveBeenCalledTimes(2)
   })
+
+  // test('async stuff', async () => {
+  //   expect.assertions(1)
+  //   const data = await User.fetch()
+  //   expect(data.name).toEqual('Jane')
+  // })
 })
