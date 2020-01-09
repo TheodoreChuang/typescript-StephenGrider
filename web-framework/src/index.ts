@@ -1,4 +1,4 @@
-// import { User } from './models/User'
+import { User } from './models/User'
 import { Collection } from './models/Collection'
 
 export const rootUrl = 'http://localhost:3000'
@@ -22,10 +22,16 @@ export const rootUrl = 'http://localhost:3000'
 
 // jc.save()
 
-const collection = new Collection(`${rootUrl}/users`)
+const userCollection = User.buildUserCollection()
 
-collection.on('change', () => {
-  console.log(collection)
+userCollection.on('change', () => {
+  console.log(userCollection)
 })
 
-collection.fetch()
+userCollection.on('updated', () => {
+  console.log('updated')
+})
+
+userCollection.trigger('updated')
+
+userCollection.fetch()
