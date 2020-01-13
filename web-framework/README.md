@@ -30,6 +30,10 @@
 
 ## VIEW
 
+- parent: Element
+- template(): string representation of HTML
+- render(): append template HTML to parent element within DOM
+
 ### Set Up
 
 ### Run Frontend

@@ -1,7 +1,10 @@
 import { User } from './models/User'
-import { Collection } from './models/Collection'
+import { UserForm } from './views/UserForm'
 
 export const rootUrl = 'http://localhost:3000'
+
+// /* MODELS */
+// /* User */
 
 // const jc = User.buildUser({ name: 'John Citizen', age: 99, id: 1234 })
 
@@ -22,16 +25,27 @@ export const rootUrl = 'http://localhost:3000'
 
 // jc.save()
 
-const userCollection = User.buildUserCollection()
+// /* User Collection */
 
-userCollection.on('change', () => {
-  console.log(userCollection)
-})
+// const userCollection = User.buildUserCollection()
 
-userCollection.on('updated', () => {
-  console.log('updated')
-})
+// userCollection.on('change', () => {
+//   console.log('ON CHANGE: ', userCollection)
+// })
 
-userCollection.trigger('updated')
+// userCollection.on('updated', () => {
+//   console.log('updated')
+// })
 
-userCollection.fetch()
+// userCollection.trigger('updated')
+
+// userCollection.fetch()
+
+// console.log('userCollection.models', userCollection.models)
+
+/* VIEWS */
+/* UserForm */
+
+const userForm = new UserForm(document.getElementById('root'))
+
+userForm.render()

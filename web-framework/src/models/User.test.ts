@@ -1,4 +1,5 @@
 import { User } from './User'
+import { Collection } from './Collection'
 
 describe('Test User model', () => {
   let testUser: User
@@ -45,4 +46,11 @@ describe('Test User model', () => {
   //   const data = await User.fetch()
   //   expect(data.name).toEqual('Jane')
   // })
+
+  test('Creates a collection of users', () => {
+    // const testUser2 = User.buildUser({ name: 'Bob Campbell', age: 32 })
+    const userCollection = User.buildUserCollection()
+
+    expect(userCollection).toBeInstanceOf(Collection)
+  })
 })
