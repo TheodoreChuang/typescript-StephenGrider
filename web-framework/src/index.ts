@@ -3,27 +3,27 @@ import { UserForm } from './views/UserForm'
 
 export const rootUrl = 'http://localhost:3000'
 
-// /* MODELS */
-// /* User */
+/* MODELS */
+/* User */
 
-// const jc = User.buildUser({ name: 'John Citizen', age: 99, id: 1234 })
+const userJc = User.buildUser({ name: 'John Citizen', age: 99, id: 1234 })
 
-// jc.on('change', () => console.warn('User Attributes Changed:\n', jc))
-// jc.on('save', () => console.warn('User Saved:\n', jc))
-// jc.on('error', () => console.error('Error saving user'))
+// userJc.on('change', () => console.warn('User Attributes Changed:\n', userJc))
+// userJc.on('save', () => console.warn('User Saved:\n', userJc))
+// userJc.on('error', () => console.error('Error saving user'))
 
-// console.log(jc.get('name'))
+// console.log(userJc.get('name'))
 
-// jc.set({ name: 'John Civilian', age: 1 })
-// console.log(jc.get('name'))
+// userJc.set({ name: 'John Civilian', age: 1 })
+// console.log(userJc.get('name'))
 
-// jc.on('updated', () => console.log('update 1'))
-// jc.on('updated', () => console.log('update 2'))
-// jc.trigger('updated')
+// userJc.on('updated', () => console.log('update 1'))
+// userJc.on('updated', () => console.log('update 2'))
+// userJc.trigger('updated')
 
-// jc.fetch()
+// userJc.fetch()
 
-// jc.save()
+// userJc.save()
 
 // /* User Collection */
 
@@ -46,6 +46,6 @@ export const rootUrl = 'http://localhost:3000'
 /* VIEWS */
 /* UserForm */
 
-const userForm = new UserForm(document.getElementById('root'))
+const userForm = new UserForm(document.getElementById('root'), userJc)
 
 userForm.render()
