@@ -3,10 +3,12 @@ import { UserForm } from './views/UserForm'
 
 export const rootUrl = 'http://localhost:3000'
 
-/* MODELS */
+/* 
+  MODELS 
+*/
 /* User */
 
-const userJc = User.buildUser({ name: 'John Citizen', age: 99, id: 1234 })
+// const userJc = User.buildUser({ name: 'John Citizen', age: 99, id: 1234 })
 
 // userJc.on('change', () => console.warn('User Attributes Changed:\n', userJc))
 // userJc.on('save', () => console.warn('User Saved:\n', userJc))
@@ -43,9 +45,18 @@ const userJc = User.buildUser({ name: 'John Citizen', age: 99, id: 1234 })
 
 // console.log('userCollection.models', userCollection.models)
 
-/* VIEWS */
+/* 
+  VIEWS 
+*/
 /* UserForm */
 
-const userForm = new UserForm(document.getElementById('root'), userJc)
+// const userHS = User.buildUser({ name: 'Haruka Shimizu', age: 33, id: 1587 })
 
-userForm.render()
+// const rootElement = document.getElementById('root')
+
+// if (rootElement) {
+//   const userForm = new UserForm(rootElement, userHS)
+//   userForm.render()
+// } else {
+//   throw new Error('Root element not found')
+// }
