@@ -1,6 +1,31 @@
 import { User } from './User'
 import { Collection } from './Collection'
 
+declare global {
+  namespace jest {
+    interface Matchers<R, T> {
+      toBeWithinRange(a: number, b: number): R
+    }
+  }
+}
+
+expect.extend({
+  toBeWithinRange(received, floor, ceiling) {
+    const pass = received >= floor && received <= ceiling
+    if (pass) {
+      return {
+        message: () => `expected ${received} not to be within range ${floor} - ${ceiling}`,
+        pass: true
+      }
+    } else {
+      return {
+        message: () => `expected ${received} to be within range ${floor} - ${ceiling}`,
+        pass: false
+      }
+    }
+  }
+})
+
 describe('Test User model', () => {
   let testUser: User
   beforeEach(() => (testUser = User.buildUser({ name: 'John Citizen', age: 99 })))
@@ -18,6 +43,11 @@ describe('Test User model', () => {
   test('SET all attribute of an user', () => {
     testUser.set({ name: 'Jane', age: 1 })
     expect(testUser.get('name')).toBe('Jane')
+  })
+
+  test('SET random age of user', () => {
+    testUser.setRandomAge()
+    expect(testUser.get('age')).toBeWithinRange(0, 150)
   })
 
   // test('ON registers an event', () => {
