@@ -1,5 +1,5 @@
 import { User } from './models/User'
-import { UserForm } from './views/UserForm'
+import { UserEdit } from './views/UserEdit'
 
 export const rootUrl = 'http://localhost:3000'
 
@@ -48,15 +48,15 @@ export const rootUrl = 'http://localhost:3000'
 /* 
   VIEWS 
 */
-/* UserForm */
+/* UserEdit */
 
-// const userHS = User.buildUser({ name: 'Haruka Shimizu', age: 33, id: 1587 })
+const userHS = User.buildUser({ name: 'Haruka Shimizu', age: 33, id: 1587 })
 
-// const rootElement = document.getElementById('root')
+const rootElement = document.getElementById('root')
 
-// if (rootElement) {
-//   const userForm = new UserForm(rootElement, userHS)
-//   userForm.render()
-// } else {
-//   throw new Error('Root element not found')
-// }
+if (rootElement) {
+  const userEdit = new UserEdit(rootElement, userHS)
+  userEdit.render()
+} else {
+  throw new Error('Root element not found')
+}

@@ -4,7 +4,7 @@
 
 - generic constrains get<K extends keyof T>(key: K): T[K] { ... }
   - https://www.udemy.com/course/typescript-the-complete-developers-guide/learn/lecture/15066982#content
-  - or via interface
+  - or via interface, class
 - type guard
 - abstract classes & methods
 
@@ -36,6 +36,11 @@
 - parent: Element
 - template(): string representation of HTML
 - render(): append template HTML to parent element within DOM
+
+- View (abstract class)
+  - UserEdit
+    - UserShow
+    - UserForm
 
 ### Set Up
 
