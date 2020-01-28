@@ -1,5 +1,10 @@
 import { Model } from '../models/Model'
 
+/**
+ * Base Abstract Class for build Views
+ * @param T the model
+ * @param K the model's props
+ */
 export abstract class View<T extends Model<K>, K> {
   constructor(public parent: Element, public model: T) {
     this.bindModel()
@@ -7,7 +12,7 @@ export abstract class View<T extends Model<K>, K> {
 
   abstract template(): string
 
-  // declare event mappings
+  // Start: Declare event mappings
   eventsMap(): { [key: string]: () => void } {
     return {}
   }
@@ -23,6 +28,7 @@ export abstract class View<T extends Model<K>, K> {
       })
     }
   }
+  // End: Declare event mappings
 
   // onChange rerender
   bindModel(): void {
@@ -31,7 +37,7 @@ export abstract class View<T extends Model<K>, K> {
     })
   }
 
-  // handles nestings UI components
+  // Start: Handles nestings UI components
   regions: { [key: string]: Element } = {}
 
   regionsMap(): { [key: string]: string } {
@@ -52,6 +58,7 @@ export abstract class View<T extends Model<K>, K> {
   }
 
   onRender(): void {}
+  // End: Handles nestings UI components
 
   render(): void {
     this.parent.innerHTML = ''

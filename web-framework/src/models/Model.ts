@@ -20,6 +20,9 @@ interface HasId {
   id?: number
 }
 
+/**
+ * Base Model incorporating classes: Attributes, Eventing, Sync
+ */
 export class Model<T extends HasId> {
   constructor(private attributes: ModelAttributes<T>, private events: Events, private sync: Sync<T>) {}
 

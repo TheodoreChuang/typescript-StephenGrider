@@ -1,6 +1,11 @@
 import axios, { AxiosResponse } from 'axios'
 import { Eventing } from './Eventing'
 
+/**
+ * General Class to build a collection a model (ex. UserCollection, CollectionView)
+ * @param T the model
+ * @param K the model's props
+ */
 export class Collection<T, K> {
   models: T[] = []
   events: Eventing = new Eventing()
@@ -15,11 +20,10 @@ export class Collection<T, K> {
     return this.events.trigger
   }
 
-  fetch(): void {
-    axios.get(this.rootUrl).then((response: AxiosResponse) => {
-      response.data.forEach((value: K) => {
-        this.models.push(this.deserialize(value))
-      })
+  async fetch(): Promise<void> {
+    let response: AxiosResponse = await axios.get(this.rootUrl)
+    response.data.forEach((value: K) => {
+      this.models.push(this.deserialize(value))
     })
 
     this.trigger('change')
