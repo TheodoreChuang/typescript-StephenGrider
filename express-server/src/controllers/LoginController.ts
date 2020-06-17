@@ -1,10 +1,16 @@
-import { Request, Response } from 'express'
-import { get, controller } from './decorators'
+import { Request, Response, NextFunction } from 'express'
+import { get, controller, use } from './decorators'
+
+function logger(req: Request, res: Response, next: NextFunction) {
+  console.log('Request made')
+  next()
+}
 
 @controller('/auth')
 class LoginController {
   @get('/login')
-  getLogin(req: Request, res: Response):void {
+  @use(logger)
+  getLogin(req: Request, res: Response): void {
     res.send(`
       <form method="POST">
         <div>
